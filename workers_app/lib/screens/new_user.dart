@@ -50,6 +50,9 @@ class _NewUserState extends State<NewUser> {
                 onTap: () {
                   context.read<WorkersBloc>().add(AddWorkers(
                       firstName: firstName.text, lastName: lastName.text));
+                  firstName.dispose();
+                  lastName.dispose();
+                  Navigator.pop(context);
                 },
                 child: Container(
                   width: 200,
