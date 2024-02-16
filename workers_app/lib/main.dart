@@ -5,7 +5,8 @@ import 'package:workers_app/bloc/workers_bloc.dart';
 import 'home.dart';
 
 void main() {
-  runApp(BlocProvider(create: (context) => WorkersBloc(),
+  runApp(BlocProvider(
+    create: (context) => WorkersBloc(),
     child: const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyApp(),
