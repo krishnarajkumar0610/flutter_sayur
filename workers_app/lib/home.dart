@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:workers_app/bloc/workers_bloc.dart';
 import 'package:workers_app/methods/special_methods.dart';
 import 'package:workers_app/screens/new_user.dart';
 import 'package:workers_app/widgets/master_card.dart';
@@ -45,8 +47,8 @@ class Home extends StatelessWidget {
                     top: 5,
                     child: Text(
                       "Adewale Taiwo",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 20),
                     )),
                 Positioned(
                     left: 160,
@@ -132,8 +134,8 @@ class Home extends StatelessWidget {
                                   SpecialMethod.space(height: 20),
                                   CircleAvatar(
                                     backgroundColor: Colors.redAccent,
-                                    child:
-                                        Image.asset("assets/user_profile.png"),
+                                    child: Image.asset(
+                                        "assets/user_profile.png"),
                                   ),
                                   SpecialMethod.space(height: 10),
                                   SpecialMethod.text("Add", size: 15),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:workers_app/bloc/workers_bloc.dart';
+import 'package:workers_app/bloc/workers_events.dart';
 import 'package:workers_app/methods/special_methods.dart';
 
 class NewUser extends StatefulWidget {
@@ -45,9 +48,8 @@ class _NewUserState extends State<NewUser> {
               SpecialMethod.space(height: 70),
               GestureDetector(
                 onTap: () {
-                  firstName.dispose();
-                  lastName.dispose();
-                  Navigator.pop(context);
+                  context.read<WorkersBloc>().add(AddWorkers(
+                      firstName: firstName.text, lastName: lastName.text));
                 },
                 child: Container(
                   width: 200,
