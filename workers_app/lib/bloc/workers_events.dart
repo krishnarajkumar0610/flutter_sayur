@@ -7,8 +7,4 @@ class AddWorkers extends WorkersEvents {
   AddWorkers({this.firstName, this.lastName});
 }
 
-class GetEvent extends WorkersEvents {
-  bool isLoading;
-
-  GetEvent({this.isLoading = false});
-}
+class GetEvent extends WorkersEvents {}

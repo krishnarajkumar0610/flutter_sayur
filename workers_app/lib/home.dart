@@ -132,41 +132,45 @@ class _HomeState extends State<Home> {
                           child: BlocConsumer<WorkersBloc, WorkersState>(
                             listener: (context, state) {},
                             builder: (context, state) => ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: state.data?.length??0,
-                              itemBuilder: (context, index) => Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 5.0, bottom: 20, top: 10),
-                                child: Container(
-                                  width: 80,
-                                  height: 10,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: const [
-                                      BoxShadow(
-                                          color: Colors.grey,
-                                          offset: Offset(0, 5),
-                                          blurRadius: 5)
-                                    ],
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      SpecialMethod.space(height: 20),
-                                      CircleAvatar(
-                                        backgroundColor: Colors.redAccent,
-                                        child: Image.asset(
-                                            "assets/user_profile.png"),
+                                scrollDirection: Axis.horizontal,
+                                itemCount: state.data?.length ?? 0,
+                                itemBuilder: (context, index) {
+                                  final data = state.data?[index];
+                                  return Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 5.0, bottom: 20, top: 10),
+                                    child: Container(
+                                      width: 80,
+                                      height: 10,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: const [
+                                          BoxShadow(
+                                              color: Colors.grey,
+                                              offset: Offset(0, 5),
+                                              blurRadius: 5)
+                                        ],
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
-                                      SpecialMethod.space(height: 10),
-                                      SpecialMethod.text("Add", size: 15),
-                                      SpecialMethod.space(height: 3),
-                                      SpecialMethod.text("Workers", size: 15)
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                                      child: Column(
+                                        children: [
+                                          SpecialMethod.space(height: 20),
+                                          CircleAvatar(
+                                            backgroundColor: Colors.redAccent,
+                                            child: Image.asset(
+                                                "assets/user_profile.png"),
+                                          ),
+                                          SpecialMethod.space(height: 10),
+                                          SpecialMethod.text(data.title,
+                                              size: 15),
+                                          SpecialMethod.space(height: 3),
+                                          SpecialMethod.text(data.description,
+                                              size: 15)
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                }),
                           ))),
                   SpecialMethod.positionedText("Services",
                       top: 475, left: 15, size: 15),
