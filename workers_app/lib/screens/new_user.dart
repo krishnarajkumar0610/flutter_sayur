@@ -4,6 +4,8 @@ import 'package:workers_app/bloc/workers_bloc.dart';
 import 'package:workers_app/bloc/workers_events.dart';
 import 'package:workers_app/methods/special_methods.dart';
 
+import '../bloc/workers_states.dart';
+
 class NewUser extends StatefulWidget {
   const NewUser({super.key});
 
@@ -35,39 +37,42 @@ class _NewUserState extends State<NewUser> {
       appBar: AppBar(
         title: SpecialMethod.text("ADD NEW USER PAGE", color: Colors.pink),
       ),
-      body: ListView(
-        children: [
-          Column(
-            children: [
-              SpecialMethod.space(height: 150),
-              textField(controller: firstName, text: "First Name"),
-              SpecialMethod.space(
-                height: 30,
-              ),
-              textField(controller: lastName, text: "Last Name"),
-              SpecialMethod.space(height: 70),
-              GestureDetector(
-                onTap: () {
-                  context.read<WorkersBloc>().add(AddWorkers(
-                      firstName: firstName.text, lastName: lastName.text));
-                  firstName.dispose();
-                  lastName.dispose();
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  width: 200,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.pinkAccent),
-                  child: Center(
-                    child: SpecialMethod.text("SUBMIT USER", size: 20),
-                  ),
+      body: BlocConsumer<WorkersBloc, WorkersState>(
+        listener: (context, state) {},
+        builder: (context, state) => ListView(
+          children: [
+            Column(
+              children: [
+                SpecialMethod.space(height: 150),
+                textField(controller: firstName, text: "First Name"),
+                SpecialMethod.space(
+                  height: 30,
                 ),
-              )
-            ],
-          ),
-        ],
+                textField(controller: lastName, text: "Last Name"),
+                SpecialMethod.space(height: 70),
+                GestureDetector(
+                  onTap: () {
+                    context.read<WorkersBloc>().add(AddWorkers(
+                        firstName: firstName.text, lastName: lastName.text));
+                    firstName.dispose();
+                    lastName.dispose();
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: 200,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.pinkAccent),
+                    child: Center(
+                      child: SpecialMethod.text("SUBMIT USER", size: 20),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

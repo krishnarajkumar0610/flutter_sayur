@@ -8,5 +8,7 @@ class AddWorkers extends WorkersEvents {
 }
 
 class GetEvent extends WorkersEvents {
-  
+  bool isLoading;
+
+  GetEvent({this.isLoading = false});
 }

@@ -22,14 +22,18 @@ class WorkersBloc extends Bloc<WorkersEvents, WorkersState> {
     });
 
     on<GetEvent>((event, emit) async {
+      emit(WorkersState(loadingStatus: true));
       final response = await http
           .get(Uri.parse("https://api.nstack.in/v1/todos?page=1&limit=10"));
       if (response.statusCode == 200) {
-        print("Getted the datas from the server");
         Map<String, dynamic> object = jsonDecode(response.body);
         List<dynamic> datas = object['items'];
-        List items = datas.map((e) => WorkersState.fromJson(e)).toList();
-        emit(WorkersState(datas: items));
+
+        List<dynamic> items = datas.map((e) {
+          return WorkersState.fromJson(e);
+        }).toList();
+
+        emit(WorkersState(data: items, loadingStatus: false));
       }
     });
   }

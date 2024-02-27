@@ -133,7 +133,7 @@ class _HomeState extends State<Home> {
                             listener: (context, state) {},
                             builder: (context, state) => ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount: state.datas?.length??0,
+                              itemCount: state.data?.length??0,
                               itemBuilder: (context, index) => Padding(
                                 padding: const EdgeInsets.only(
                                     left: 5.0, bottom: 20, top: 10),
